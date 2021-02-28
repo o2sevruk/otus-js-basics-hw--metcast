@@ -2,7 +2,7 @@
 
 | Statements                                                                    | Branches                                                            | Functions                                                                  | Lines                                                                    |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| ![Statements](https://img.shields.io/badge/Coverage-99.14%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-71.43%25-red.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-99.14%25-brightgreen.svg) |
+| ![Statements](https://img.shields.io/badge/Coverage-99.15%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-71.43%25-red.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-99.15%25-brightgreen.svg) |
 
 ## Project setup
 

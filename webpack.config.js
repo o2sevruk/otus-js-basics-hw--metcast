@@ -1,19 +1,19 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const WriteFilePlugin = require("write-file-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  devtool: "source-map",
-  entry: ["./src/js/index.js", "./src/scss/styles.scss"],
+  mode: 'development',
+  devtool: 'source-map',
+  entry: ['./src/js/index.js', './src/scss/styles.scss'],
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "./dist"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, './dist'),
   },
   devServer: {
-    contentBase: path.join(__dirname, "/"),
+    contentBase: path.join(__dirname, '/'),
     compress: true,
     port: 8080,
   },
@@ -23,10 +23,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-transform-runtime"],
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime'],
           },
         },
       },
@@ -38,13 +38,13 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               sourceMap: true,
             },
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
           },
         ],
       },
@@ -52,25 +52,30 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "styles.css",
+      filename: 'styles.css',
     }),
     new WriteFilePlugin(),
     new HtmlWebpackPlugin({
-      title: "Metcast",
-      template: "./src/index.html",
+      title: 'Metcast',
+      template: './src/index.html',
       minify: true,
     }),
     new CopyPlugin({
       patterns: [
         {
-          from: "*css",
-          to: "leaflet",
-          context: "node_modules/leaflet/dist",
+          from: '*css',
+          to: 'leaflet',
+          context: 'node_modules/leaflet/dist',
         },
         {
-          from: "images/*",
-          to: "leaflet",
-          context: "node_modules/leaflet/dist",
+          from: 'images/*',
+          to: 'leaflet',
+          context: 'node_modules/leaflet/dist',
+        },
+        {
+          from: 'img/*',
+          to: 'img',
+          context: 'src',
         },
       ],
     }),
