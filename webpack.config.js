@@ -4,8 +4,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const WriteFilePlugin = require("write-file-webpack-plugin");
 
-require("@babel/polyfill");
-
 module.exports = {
   mode: "development",
   devtool: "source-map",
