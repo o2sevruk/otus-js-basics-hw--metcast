@@ -1,33 +1,33 @@
 .info {
-	display         : flex;
-	align-items     : center;
-	justify-content : center;
-	max-width       : 500px;
-	margin-left     : auto;
-	margin-right    : auto;
-	margin-bottom   : 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
 }
 
 .info__img {
-	width  : 60px;
-	height : 60px;
+  width: 60px;
+  height: 60px;
 }
 
 .info__title {
-	margin    : 0;
-	font-size : 2rem;
-	color     : #01579b;
+  margin: 0;
+  font-size: 2rem;
+  color: #01579b;
 }
 
 .info__description {
-	display          : flex;
-	align-items      : center;
-	justify-content  : center;
-	font-weight      : 500;
-	font-size        : 1.25rem;
-	color            : #fff;
-	background-color : #01579b;
-	border-radius    : 1.25rem;
-	padding          : 0.25rem 0.75rem;
-	margin-left      : 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: #fff;
+  background-color: #01579b;
+  border-radius: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  margin-left: 1rem;
 }

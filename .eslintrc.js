@@ -16,5 +16,11 @@ module.exports = {
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
+    'import/prefer-default-export': 'off',
+    'no-tabs': 'off',
+    'no-undef': 'off',
+    'consistent-return': 'off',
+    'no-alert': 'off',
+    'no-return-await': 'off',
   },
 };
