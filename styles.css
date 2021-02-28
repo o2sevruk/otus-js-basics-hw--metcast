@@ -1,0 +1,175 @@
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  font-size: 16px;
+  margin: 0;
+  padding: 100px 50px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.map-history-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.empty {
+  order: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #e0e0e0;
+}
+
+.error {
+  max-width: 500px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #fff;
+  background-color: #bf360c;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+}
+.form:hover .btn {
+  color: #01579b;
+}
+
+.input {
+  width: 100%;
+  line-height: 1.4;
+  text-transform: uppercase;
+  border-width: 0 0 3px 0;
+  border-color: #e0e0e0;
+  border-radius: 0;
+  padding: 0.65rem 80px 0.65rem 0;
+  transition: border-color 0.2s ease-in-out;
+}
+.input:focus {
+  border-color: #01579b;
+  outline: 0 none;
+}
+
+.btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #e0e0e0;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0;
+  transform: translateY(-50%);
+}
+.btn:hover {
+  color: #01579b;
+}
+.btn:hover, .btn:focus {
+  outline: 0 none;
+}
+
+.history {
+  order: 0;
+  list-style: none;
+  padding-left: 30px;
+  border-left: 10px solid #039be5;
+  margin: 0;
+}
+.history li {
+  position: relative;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 1rem;
+  color: #039be5;
+  cursor: pointer;
+  padding-left: 0;
+  transition: padding-left 0.2s ease, color 0.2s ease;
+}
+.history li:hover {
+  padding-left: 1rem;
+  color: #01579b;
+}
+.history li:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.map {
+  order: 1;
+  width: 300px;
+  height: 300px;
+  flex: 0 0 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 2rem;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+}
+
+.info__img {
+  width: 60px;
+  height: 60px;
+}
+
+.info__title {
+  margin: 0;
+  font-size: 2rem;
+  color: #01579b;
+}
+
+.info__description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: #fff;
+  background-color: #01579b;
+  border-radius: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  margin-left: 1rem;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  transform: translate(-50%, -50%);
+}
+
+/*# sourceMappingURL=styles.css.map*/
