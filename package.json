@@ -57,8 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run test && badges && git add 'README.md'"
+      "pre-commit": "lint-staged && test && badges && git add 'README.md'"
     }
   },
   "dependencies": {
