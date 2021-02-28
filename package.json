@@ -59,8 +59,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "istanbul-badges-readme && git add 'README.md' && lint-staged",
-      "pre-push": "npm test"
+      "pre-commit": "lint-staged && istanbul-badges-readme && git add 'README.md'"
     }
   },
   "dependencies": {
