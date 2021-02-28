@@ -64,17 +64,17 @@ module.exports = {
       patterns: [
         {
           from: '*css',
-          to: 'leaflet',
+          to: 'src/leaflet',
           context: 'node_modules/leaflet/dist',
         },
         {
           from: 'images/*',
-          to: 'leaflet',
+          to: 'src/leaflet',
           context: 'node_modules/leaflet/dist',
         },
         {
           from: '*',
-          to: 'img',
+          to: 'src/img',
           context: 'src/img',
         },
       ],
