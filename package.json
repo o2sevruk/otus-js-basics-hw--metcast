@@ -58,7 +58,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npx mrm run test && badges && git add 'README.md'"
+      "pre-push": "jest --coverage && istanbul-badges-readme && git add 'README.md'"
     }
   },
   "dependencies": {
