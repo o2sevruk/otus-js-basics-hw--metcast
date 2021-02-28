@@ -1,0 +1,6 @@
+# Ignore settings files:
+/.github/*
+prettier.config.js
+lint-staged.config.js
+package.json
+package-lock.json

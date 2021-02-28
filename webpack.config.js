@@ -51,11 +51,15 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "styles.css",
     }),
     new WriteFilePlugin(),
+    new HtmlWebpackPlugin({
+      title: "Metcast",
+      template: "./src/index.html",
+      minify: true,
+    }),
     new CopyPlugin({
       patterns: [
         {

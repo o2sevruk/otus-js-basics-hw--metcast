@@ -1,0 +1,2 @@
+export const OPENWEATHERMAP_API_KEY = '57f678d75336cb9b9e53886fe53141a0';
+export const MAPBOX_API_KEY = 'pk.eyJ1IjoibzJzZXZydWsiLCJhIjoiY2tsNTlhOGVkMjR1YzJwcW9obWcxajVyOSJ9.XPv7YK9QHJpq5EbhQGYxxQ';
