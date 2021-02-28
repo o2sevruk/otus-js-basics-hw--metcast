@@ -73,9 +73,9 @@ module.exports = {
           context: 'node_modules/leaflet/dist',
         },
         {
-          from: 'img/*',
+          from: '*',
           to: 'img',
-          context: 'src',
+          context: 'src/img',
         },
       ],
     }),
