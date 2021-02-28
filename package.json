@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack",
-    "test": "jest --coverage --watchAll",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watchAll",
     "badges": "istanbul-badges-readme",
     "lint:prettier": "prettier --write ."
   },
@@ -58,7 +59,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "jest --coverage && istanbul-badges-readme && git add 'README.md'"
+      "pre-push": "npm run test"
     }
   },
   "dependencies": {
