@@ -1,0 +1,65 @@
+{
+  "name": "otus-js-basics-hw--metcast",
+  "version": "1.0.0",
+  "description": "Otus. JavaScript Basics. Homework: metcast.",
+  "private": true,
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack",
+    "test": "jest --coverage --watchAll",
+    "lint:prettier": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/o2sevruk/otus-js-basics-hw--metcast.git"
+  },
+  "author": "o2sevruk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/o2sevruk/otus-js-basics-hw--metcast/issues"
+  },
+  "homepage": "https://github.com/o2sevruk/otus-js-basics-hw--metcast#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.13.8",
+    "@types/jest": "^26.0.20",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^6.4.1",
+    "css-loader": "^5.0.2",
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "html-webpack-plugin": "^5.2.0",
+    "husky": "^5.0.9",
+    "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
+    "lint-staged": "^10.5.4",
+    "mini-css-extract-plugin": "^1.3.6",
+    "prettier": "^2.2.1",
+    "sass": "^1.32.6",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "write-file-webpack-plugin": "^4.5.1"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,scss,html,md,yml}": "prettier --write ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "dependencies": {
+    "leaflet": "^1.7.1"
+  }
+}
