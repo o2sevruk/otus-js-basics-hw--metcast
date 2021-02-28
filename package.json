@@ -36,6 +36,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.5",
     "html-webpack-plugin": "^4.5.2",
     "husky": "^4.3.8",
     "istanbul-badges-readme": "^1.2.0",
@@ -59,7 +60,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm test"
+      "pre-push": "npm test && npm badges && git add 'README.md'"
     }
   },
   "dependencies": {
