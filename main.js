@@ -15839,7 +15839,7 @@ function _getWeatherByCityName() {
             response = _context.sent;
 
             if (!response.ok) {
-              _context.next = 9;
+              _context.next = 7;
               break;
             }
 
@@ -15849,10 +15849,10 @@ function _getWeatherByCityName() {
           case 6:
             return _context.abrupt("return", _context.sent);
 
-          case 9:
+          case 7:
             throw new Error("\u041E\u0448\u0438\u0431\u043A\u0430 HTTP: ".concat(response.status));
 
-          case 10:
+          case 8:
           case "end":
             return _context.stop();
         }
@@ -15880,7 +15880,7 @@ function _getWeatherByCoordinates() {
             response = _context2.sent;
 
             if (!response.ok) {
-              _context2.next = 9;
+              _context2.next = 7;
               break;
             }
 
@@ -15890,10 +15890,10 @@ function _getWeatherByCoordinates() {
           case 6:
             return _context2.abrupt("return", _context2.sent);
 
-          case 9:
+          case 7:
             throw new Error("\u041E\u0448\u0438\u0431\u043A\u0430 HTTP: ".concat(response.status));
 
-          case 10:
+          case 8:
           case "end":
             return _context2.stop();
         }
