@@ -1,0 +1,27 @@
+.history {
+  order: 0;
+  list-style: none;
+  padding-left: 30px;
+  border-left: 10px solid #039be5;
+  margin: 0;
+
+  li {
+    position: relative;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 1rem;
+    color: #039be5;
+    cursor: pointer;
+    padding-left: 0;
+    transition: padding-left 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      padding-left: 1rem;
+      color: #01579b;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 0.75rem;
+    }
+  }
+}

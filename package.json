@@ -1,0 +1,69 @@
+{
+  "name": "otus-js-basics-hw--metcast",
+  "version": "1.0.0",
+  "description": "Otus. JavaScript Basics. Homework: metcast.",
+  "private": true,
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watchAll",
+    "badges": "istanbul-badges-readme",
+    "lint": "eslint --cache --fix && prettier --write .",
+    "lint:prettier": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/o2sevruk/otus-js-basics-hw--metcast.git"
+  },
+  "author": "o2sevruk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/o2sevruk/otus-js-basics-hw--metcast/issues"
+  },
+  "homepage": "https://github.com/o2sevruk/otus-js-basics-hw--metcast#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.13.8",
+    "@babel/preset-env": "^7.12.13",
+    "@types/jest": "^26.0.20",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^6.4.1",
+    "css-loader": "^5.0.2",
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.5",
+    "html-webpack-plugin": "^4.5.2",
+    "husky": "^4.3.8",
+    "istanbul-badges-readme": "^1.2.0",
+    "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
+    "lint-staged": "^10.5.4",
+    "mini-css-extract-plugin": "^1.3.6",
+    "prettier": "^2.2.1",
+    "sass": "^1.32.6",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "write-file-webpack-plugin": "^4.5.1"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,scss,html,md,yml}": "prettier --write ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test && istanbul-badges-readme && git add 'README.md'"
+    }
+  },
+  "dependencies": {
+    "leaflet": "^1.7.1"
+  }
+}
