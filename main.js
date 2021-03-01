@@ -15435,7 +15435,7 @@ var Loader = /*#__PURE__*/function () {
     this.el = document.createElement('img');
     this.id = 'loader';
     this.className = 'loader';
-    this.src = 'src/img/loader.svg';
+    this.src = './src/img/loader.svg';
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Loader, [{
@@ -15560,7 +15560,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils_getUserLocation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/getUserLocation */ "./src/js/utils/getUserLocation.js");
 /* harmony import */ var _utils_getWeather__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/getWeather */ "./src/js/utils/getWeather.js");
-/* harmony import */ var _utils_cookies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/cookies */ "./src/js/utils/cookies.js");
+/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/localStorage */ "./src/js/utils/localStorage.js");
 /* harmony import */ var _components_map__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/map */ "./src/js/components/map.js");
 /* harmony import */ var _components_loader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/loader */ "./src/js/components/loader.js");
 /* harmony import */ var _components_info__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/info */ "./src/js/components/info.js");
@@ -15582,117 +15582,96 @@ var location = Object(_utils_getUserLocation__WEBPACK_IMPORTED_MODULE_2__["getUs
 var map = new _components_map__WEBPACK_IMPORTED_MODULE_5__["default"]();
 var loader = new _components_loader__WEBPACK_IMPORTED_MODULE_6__["default"]();
 loader.addLoader();
-location.then( /*#__PURE__*/function () {
-  var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return Object(_utils_getWeather__WEBPACK_IMPORTED_MODULE_3__["getWeatherByCoordinates"])(data.lt, data.ln).then(function (data) {
-              return data;
-            });
-
-          case 2:
-            return _context.abrupt("return", _context.sent);
-
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function (_x) {
-    return _ref.apply(this, arguments);
-  };
-}()).then(function (data) {
-  var info = new _components_info__WEBPACK_IMPORTED_MODULE_7__["default"](data.name, data.main.temp, data.weather[0].icon);
+location.then(function (locationData) {
+  return Object(_utils_getWeather__WEBPACK_IMPORTED_MODULE_3__["getWeatherByCoordinates"])(locationData.lt, locationData.ln).then(function (weatherData) {
+    return weatherData;
+  });
+}).then(function (weatherData) {
+  var info = new _components_info__WEBPACK_IMPORTED_MODULE_7__["default"](weatherData.name, weatherData.main.temp, weatherData.weather[0].icon);
   var form = new _components_form__WEBPACK_IMPORTED_MODULE_8__["default"]();
   var formEl = form.getForm;
   var history = new _components_history__WEBPACK_IMPORTED_MODULE_9__["default"]();
-  var mapHistoryWrapper = document.createElement("div");
-  mapHistoryWrapper.id = "mapHistory";
-  mapHistoryWrapper.classList.add("map-history-wrapper");
+  var mapHistoryWrapper = document.createElement('div');
+  mapHistoryWrapper.id = 'mapHistory';
+  mapHistoryWrapper.classList.add('map-history-wrapper');
   loader.removeLoader();
   info.addInfo();
   form.addForm();
   document.body.appendChild(mapHistoryWrapper);
 
-  if (Object(_utils_cookies__WEBPACK_IMPORTED_MODULE_4__["getCookies"])().length) {
-    history.addHistory(document.getElementById("mapHistory"));
-    Object(_utils_cookies__WEBPACK_IMPORTED_MODULE_4__["getCookies"])().forEach(function (el) {
-      history.addItemToHistory(el, /*#__PURE__*/_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee2() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee2$(_context2) {
+  if (Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_4__["getLocalStorage"])().length) {
+    history.addHistory(document.getElementById('mapHistory'));
+    Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_4__["getLocalStorage"])().forEach(function (el) {
+      history.addItemToHistory(el, /*#__PURE__*/_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context.prev = _context.next) {
               case 0:
-                _context2.next = 2;
-                return Object(_utils_getWeather__WEBPACK_IMPORTED_MODULE_3__["getWeatherByCityName"])(el).then(function (data) {
-                  map.setCenter(data.coord.lat, data.coord.lon);
-                  info.setWeather(data.name, data.main.temp, data.weather[0].icon);
+                _context.next = 2;
+                return Object(_utils_getWeather__WEBPACK_IMPORTED_MODULE_3__["getWeatherByCityName"])(el).then(function (localStorageData) {
+                  map.setCenter(localStorageData.coord.lat, localStorageData.coord.lon);
+                  info.setWeather(localStorageData.name, localStorageData.main.temp, localStorageData.weather[0].icon);
                 });
 
               case 2:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2);
+        }, _callee);
       })));
     });
   } else {
-    history.addEmpty(document.getElementById("mapHistory"));
+    history.addEmpty(document.getElementById('mapHistory'));
   }
 
-  map.addMap(data.coord.lat, data.coord.lon, document.getElementById("mapHistory"));
-  formEl.addEventListener("submit", /*#__PURE__*/function () {
-    var _ref3 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee4(e) {
+  map.addMap(weatherData.coord.lat, weatherData.coord.lon, document.getElementById('mapHistory'));
+  formEl.addEventListener('submit', /*#__PURE__*/function () {
+    var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee3(e) {
       var city;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee4$(_context4) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee3$(_context3) {
         while (1) {
-          switch (_context4.prev = _context4.next) {
+          switch (_context3.prev = _context3.next) {
             case 0:
               e.preventDefault();
               city = form.getValue;
-              _context4.next = 4;
-              return Object(_utils_getWeather__WEBPACK_IMPORTED_MODULE_3__["getWeatherByCityName"])(city).then(function (data) {
-                map.setCenter(data.coord.lat, data.coord.lon);
-                info.setWeather(data.name, data.main.temp, data.weather[0].icon);
+              _context3.next = 4;
+              return Object(_utils_getWeather__WEBPACK_IMPORTED_MODULE_3__["getWeatherByCityName"])(city).then(function (submitWeatherData) {
+                map.setCenter(submitWeatherData.coord.lat, submitWeatherData.coord.lon);
+                info.setWeather(submitWeatherData.name, submitWeatherData.main.temp, submitWeatherData.weather[0].icon);
                 history.removeEmpty();
                 history.clearHistory();
-                Object(_utils_cookies__WEBPACK_IMPORTED_MODULE_4__["setCookies"])(data.name);
+                Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_4__["setLocalStorage"])(submitWeatherData.name);
 
-                if (document.getElementById("history") === null) {
-                  history.addHistory(document.getElementById("mapHistory"));
+                if (document.getElementById('history') === null) {
+                  history.addHistory(document.getElementById('mapHistory'));
                 }
 
-                Object(_utils_cookies__WEBPACK_IMPORTED_MODULE_4__["getCookies"])().forEach(function (el) {
-                  history.addItemToHistory(el, /*#__PURE__*/_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee3() {
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee3$(_context3) {
+                Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_4__["getLocalStorage"])().forEach(function (el) {
+                  history.addItemToHistory(el, /*#__PURE__*/_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee2() {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee2$(_context2) {
                       while (1) {
-                        switch (_context3.prev = _context3.next) {
+                        switch (_context2.prev = _context2.next) {
                           case 0:
-                            _context3.next = 2;
-                            return Object(_utils_getWeather__WEBPACK_IMPORTED_MODULE_3__["getWeatherByCityName"])(el).then(function (data) {
-                              map.setCenter(data.coord.lat, data.coord.lon);
-                              info.setWeather(data.name, data.main.temp, data.weather[0].icon);
+                            _context2.next = 2;
+                            return Object(_utils_getWeather__WEBPACK_IMPORTED_MODULE_3__["getWeatherByCityName"])(el).then(function (submitLocalStorageWeatherData) {
+                              map.setCenter(submitLocalStorageWeatherData.coord.lat, submitLocalStorageWeatherData.coord.lon);
+                              info.setWeather(submitLocalStorageWeatherData.name, submitLocalStorageWeatherData.main.temp, submitLocalStorageWeatherData.weather[0].icon);
                             });
 
                           case 2:
                           case "end":
-                            return _context3.stop();
+                            return _context2.stop();
                         }
                       }
-                    }, _callee3);
+                    }, _callee2);
                   })));
                 });
-                form.setValue("");
+                form.setValue('');
               })["catch"](function (error) {
                 var message = new _components_error__WEBPACK_IMPORTED_MODULE_10__["default"]();
                 message.addError(city);
-                form.setValue("");
+                form.setValue('');
                 setTimeout(function () {
                   message.removeError();
                 }, 3000);
@@ -15701,45 +15680,17 @@ location.then( /*#__PURE__*/function () {
 
             case 4:
             case "end":
-              return _context4.stop();
+              return _context3.stop();
           }
         }
-      }, _callee4);
+      }, _callee3);
     }));
 
-    return function (_x2) {
-      return _ref3.apply(this, arguments);
+    return function (_x) {
+      return _ref2.apply(this, arguments);
     };
   }());
 });
-
-/***/ }),
-
-/***/ "./src/js/utils/cookies.js":
-/*!*********************************!*\
-  !*** ./src/js/utils/cookies.js ***!
-  \*********************************/
-/*! exports provided: setCookies, getCookies */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCookies", function() { return setCookies; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCookies", function() { return getCookies; });
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray/index.js");
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
-
-function setCookies(city) {
-  var cookiesItem = city;
-  var cookies = JSON.parse(localStorage.getItem('weatherHistory')) || [];
-  cookies = [cookiesItem].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(cookies.filter(function (el) {
-    return el !== cookiesItem;
-  })));
-  localStorage.setItem('weatherHistory', JSON.stringify(cookies.slice(0, 10)));
-}
-function getCookies() {
-  return JSON.parse(localStorage.getItem('weatherHistory')) || [];
-}
 
 /***/ }),
 
@@ -15832,32 +15783,29 @@ function _getWeatherByCityName() {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            _context.prev = 0;
+            _context.next = 3;
             return fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(city, "&units=metric&appid=").concat(_constants__WEBPACK_IMPORTED_MODULE_2__["OPENWEATHERMAP_API_KEY"]));
 
-          case 2:
+          case 3:
             response = _context.sent;
-
-            if (!response.ok) {
-              _context.next = 7;
-              break;
-            }
-
             _context.next = 6;
             return response.json();
 
           case 6:
             return _context.abrupt("return", _context.sent);
 
-          case 7:
-            throw new Error("\u041E\u0448\u0438\u0431\u043A\u0430 HTTP: ".concat(response.status));
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](0);
+            throw new Error("\u041E\u0448\u0438\u0431\u043A\u0430 HTTP: ".concat(_context.t0));
 
-          case 8:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 9]]);
   }));
   return _getWeatherByCityName.apply(this, arguments);
 }
@@ -15873,34 +15821,59 @@ function _getWeatherByCoordinates() {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.next = 2;
+            _context2.prev = 0;
+            _context2.next = 3;
             return fetch("https://api.openweathermap.org/data/2.5/weather?lat=".concat(lt, "&lon=").concat(ln, "&units=metric&appid=").concat(_constants__WEBPACK_IMPORTED_MODULE_2__["OPENWEATHERMAP_API_KEY"]));
 
-          case 2:
+          case 3:
             response = _context2.sent;
-
-            if (!response.ok) {
-              _context2.next = 7;
-              break;
-            }
-
             _context2.next = 6;
             return response.json();
 
           case 6:
             return _context2.abrupt("return", _context2.sent);
 
-          case 7:
-            throw new Error("\u041E\u0448\u0438\u0431\u043A\u0430 HTTP: ".concat(response.status));
+          case 9:
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](0);
+            throw new Error("\u041E\u0448\u0438\u0431\u043A\u0430 HTTP: ".concat(_context2.t0));
 
-          case 8:
+          case 12:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2);
+    }, _callee2, null, [[0, 9]]);
   }));
   return _getWeatherByCoordinates.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./src/js/utils/localStorage.js":
+/*!**************************************!*\
+  !*** ./src/js/utils/localStorage.js ***!
+  \**************************************/
+/*! exports provided: setLocalStorage, getLocalStorage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLocalStorage", function() { return setLocalStorage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLocalStorage", function() { return getLocalStorage; });
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray/index.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+
+function setLocalStorage(city) {
+  var cookiesItem = city;
+  var cookies = JSON.parse(localStorage.getItem('weatherHistory')) || [];
+  cookies = [cookiesItem].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(cookies.filter(function (el) {
+    return el !== cookiesItem;
+  })));
+  localStorage.setItem('weatherHistory', JSON.stringify(cookies.slice(0, 10)));
+}
+function getLocalStorage() {
+  return JSON.parse(localStorage.getItem('weatherHistory')) || [];
 }
 
 /***/ }),
