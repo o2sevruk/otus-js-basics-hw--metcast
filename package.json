@@ -9,6 +9,7 @@
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watchAll",
     "badges": "istanbul-badges-readme",
+    "lint": "eslint --cache --fix && prettier --write .",
     "lint:prettier": "prettier --write ."
   },
   "repository": {
