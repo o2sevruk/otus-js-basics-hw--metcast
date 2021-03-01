@@ -1,4 +1,4 @@
-export function setCookies(city) {
+export function setLocalStorage(city) {
   const cookiesItem = city;
   let cookies = JSON.parse(localStorage.getItem('weatherHistory')) || [];
   cookies = [cookiesItem, ...cookies.filter((el) => el !== cookiesItem)];
@@ -6,6 +6,6 @@ export function setCookies(city) {
   localStorage.setItem('weatherHistory', JSON.stringify(cookies.slice(0, 10)));
 }
 
-export function getCookies() {
+export function getLocalStorage() {
   return JSON.parse(localStorage.getItem('weatherHistory')) || [];
 }

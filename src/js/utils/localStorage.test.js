@@ -1,4 +1,4 @@
-import { setCookies, getCookies } from './cookies';
+import { setLocalStorage, getLocalStorage } from './localStorage';
 
 describe('Set and get data from localstorage', () => {
   const KEY = 'weatherHistory';
@@ -13,7 +13,7 @@ describe('Set and get data from localstorage', () => {
   });
 
   it('Set data to localstorage', () => {
-    setCookies(VALUE);
+    setLocalStorage(VALUE);
 
     expect(localStorage.setItem).toHaveBeenCalledWith(
       KEY,
@@ -22,6 +22,6 @@ describe('Set and get data from localstorage', () => {
   });
 
   it('Get data from localstorage', () => {
-    expect(getCookies()).toEqual([VALUE]);
+    expect(getLocalStorage()).toEqual([VALUE]);
   });
 });

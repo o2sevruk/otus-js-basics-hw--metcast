@@ -1,85 +1,57 @@
-import { enableFetchMocks } from 'jest-fetch-mock';
-
-import { OPENWEATHERMAP_API_KEY } from '../constants';
-
 import { getWeatherByCityName, getWeatherByCoordinates } from './getWeather';
 
-enableFetchMocks();
-
 describe('Get weather data', () => {
+  const latitude = 40;
+  const longitude = 40;
+  const errorNumber = '404';
+  const city = 'Moscow';
+  const data = {
+    name: 'Moscow',
+    main: {
+      temp: 2,
+    },
+    weather: [
+      {
+        icon: '04n',
+      },
+    ],
+  };
+
+  global.fetch = jest.fn(() => Promise.resolve({
+    json: () => Promise.resolve(data),
+  }));
+
   beforeEach(() => {
-    fetch.resetMocks();
+    fetch.mockClear();
   });
 
   it('Get weather data by city name', async () => {
-    const city = 'Moscow';
+    const weather = await getWeatherByCityName(city);
 
-    fetch.mockResponseOnce(
-      JSON.stringify({
-        name: city,
-      }),
-    );
+    expect(weather).toEqual(data);
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
 
-    const weatherByCity = await getWeatherByCityName(city);
+  it('Throws error when city name are incorrect', () => {
+    fetch.mockImplementationOnce(() => Promise.reject(errorNumber));
 
-    expect(weatherByCity.name).toEqual(city);
-    expect(fetch.mock.calls).toHaveLength(1);
-    expect(fetch.mock.calls[0][0]).toEqual(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${OPENWEATHERMAP_API_KEY}`,
-    );
+    expect(async () => {
+      await getWeatherByCityName(city);
+    }).rejects.toThrow(`Ошибка HTTP: ${errorNumber}`);
   });
 
   it('Get weather data by coordinates', async () => {
-    const lt = 55.7522;
-    const ln = 37.6156;
-    const city = 'Moscow';
+    const weather = await getWeatherByCoordinates(latitude, longitude);
 
-    fetch.mockResponseOnce(
-      JSON.stringify({
-        name: city,
-      }),
-    );
-
-    const weatherByCity = await getWeatherByCoordinates(lt, ln);
-
-    expect(weatherByCity.name).toEqual(city);
-    expect(fetch.mock.calls).toHaveLength(1);
-    expect(fetch.mock.calls[0][0]).toEqual(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lt}&lon=${ln}&units=metric&appid=${OPENWEATHERMAP_API_KEY}`,
-    );
+    expect(weather).toEqual(data);
+    expect(fetch).toHaveBeenCalledTimes(1);
   });
 
-  it('Error invalid city name', async () => {
-    const city = 'Notacity';
+  it('Throws error when coordinates are incorrect', () => {
+    fetch.mockImplementationOnce(() => Promise.reject(errorNumber));
 
-    fetch.mockResponseOnce(
-      {},
-      {
-        status: 404,
-        headers: {
-          'content-type': 'application/json',
-        },
-      },
-    );
-
-    await expect(async () => {
-      await getWeatherByCityName(city);
-    }).rejects.toThrowError();
-  });
-
-  it('Error invalid coordinates', async () => {
-    const lt = 'test';
-    const ln = 'test';
-
-    fetch.mockResponseOnce('{}', {
-      status: 404,
-      headers: {
-        'content-type': 'application/json',
-      },
-    });
-
-    await expect(async () => {
-      await getWeatherByCoordinates(lt, ln);
-    }).rejects.toThrowError();
+    expect(async () => {
+      await getWeatherByCoordinates(latitude, longitude);
+    }).rejects.toThrow(`Ошибка HTTP: ${errorNumber}`);
   });
 });

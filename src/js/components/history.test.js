@@ -16,9 +16,16 @@ describe('History component', () => {
   });
 
   it('Add item to the history', () => {
-    history.addItemToHistory('Moscow');
+    const cb = jest.fn(() => true);
 
-    expect(document.querySelector('.history li')).toBeDefined();
+    history.addItemToHistory('Moscow', cb);
+
+    const historyEl = document.querySelector('.history li');
+
+    historyEl.click();
+
+    expect(cb).toHaveBeenCalledTimes(1);
+    expect(historyEl).toBeDefined();
   });
 
   it('Add placeholder text if history is empty', () => {

@@ -3,7 +3,7 @@ export default class Loader {
     this.el = document.createElement('img');
     this.id = 'loader';
     this.className = 'loader';
-    this.src = 'src/img/loader.svg';
+    this.src = './src/img/loader.svg';
   }
 
   addLoader(mountTarget = document.body) {
